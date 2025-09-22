@@ -12,6 +12,7 @@ class CustomResponse(Response):
         exception=False,
         content_type=None,
         pagination=None,  # ✅ keep here if you want, but don’t pass to super()
+        filters=None,  # ✅ keep here if you want, but don’t pass to super()
     ):
         non_field_keys = ["non_field_errors", "detail", "details"]
 
@@ -68,6 +69,9 @@ class CustomResponse(Response):
         # ✅ Add pagination info inside response body
         if pagination:
             custom_data["pagination"] = pagination
+        
+        if filters:
+            custom_data["filters"] = filters
 
         super().__init__(
             custom_data,
