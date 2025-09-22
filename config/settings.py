@@ -18,8 +18,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 # ]
 
 
-
 INSTALLED_APPS = [
+    "unfold",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -28,9 +28,29 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "corsheaders",
+    "taggit",
+    "django_summernote",
     "blog",
     "projects",
 ]
+
+
+UNFOLD = {
+    "SITE_TITLE": "Portfolio Admin",
+    "SITE_HEADER": "My Portfolio",
+    "SITE_ICON": None,  # path to favicon
+    "SHOW_HISTORY": True,
+    "SHOW_VIEW_ON_SITE": True,
+    "COLORS": {
+        "primary": {
+            "50": "255 247 237",
+            "100": "254 237 213",
+            "500": "249 115 22",  # orange-500
+            "900": "124 45 18",
+        },
+    },
+}
+
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
