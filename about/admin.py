@@ -51,7 +51,12 @@ class ProfessionalExperienceAdmin(ModelAdmin):
 
 @admin.register(EXP)
 class EXPAdmin(ModelAdmin):
-    list_display = ("exp", "subject")
+    list_display = ("get_exp", "subject")  # ✅ use method instead of raw M2M field
+
+    def get_exp(self, obj):
+        return ", ".join([str(e) for e in obj.exp.all()])
+
+    get_exp.short_description = "Experiences"
 
 
 @admin.register(MySkills)

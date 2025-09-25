@@ -21,6 +21,7 @@ class Projects(models.Model):
     )
     slug = models.SlugField(null=True,blank=True)
     url = models.CharField(null=True,blank=True, max_length=50)
+    github = models.CharField(null=True,blank=True, max_length=50)
     client = models.CharField(null=True,blank=True, max_length=50)
     tags = TaggableManager(blank=True)
     created_at = models.DateTimeField(("created_at"), default=timezone.now)

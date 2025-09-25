@@ -24,6 +24,7 @@ class ProjectListSerializer(serializers.ModelSerializer):
             "category",
             "tags",
             "url",
+            "github",
             "created_at",
             "updated_at",
         ]

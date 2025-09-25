@@ -66,7 +66,7 @@ class ProjectsAdmin(SummernoteModelAdmin, ModelAdmin):
         (
             "Extra",
             {
-                "fields": (("url", "client"),),
+                "fields": (("url", "client","github"),),
                 "classes": ("collapse",),  # collapsible
             },
         ),

@@ -61,6 +61,7 @@ class ProfessionalExperience(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     year = models.CharField(max_length=50, blank=True, null=True)
     title = models.CharField(max_length=50, blank=True, null=True)
+    description = models.TextField(max_length=100000, blank=True, null=True)
     university = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
@@ -72,9 +73,7 @@ class ProfessionalExperience(models.Model):
 
 
 class EXP(models.Model):
-    exp = models.ForeignKey(
-        ProfessionalExperience, related_name="exp", on_delete=models.CASCADE
-    )
+    exp = models.ManyToManyField(ProfessionalExperience, related_name="exp")
     subject = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
@@ -82,7 +81,7 @@ class EXP(models.Model):
         verbose_name_plural = "EXPs"
 
     def __str__(self):
-        return str(self.exp)
+        return str(self.id)
 
 class MySkills(models.Model):
     category = models.ForeignKey('CategorySkills',related_name='skills_category',on_delete=models.CASCADE)
