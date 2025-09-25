@@ -15,6 +15,8 @@ class About(models.Model):
     about = models.TextField(blank=True)
     age = models.IntegerField(null=True, blank=True)
     degree = models.CharField(max_length=50, blank=True, null=True)
+    available_for_hire = models.BooleanField(default=True)
+    total_experience = models.CharField(max_length=50, blank=True, null=True)
     views = models.IntegerField(default=0)
 
     class Meta:
@@ -85,6 +87,7 @@ class EXP(models.Model):
 
 class MySkills(models.Model):
     category = models.ForeignKey('CategorySkills',related_name='skills_category',on_delete=models.CASCADE)
+    name = models.CharField(max_length=60,blank=True, null=True)
     percent = models.CharField(max_length=30)
 
     class Meta:
@@ -97,6 +100,7 @@ class MySkills(models.Model):
 
 class CategorySkills(models.Model):
     name = models.CharField(max_length=60)
+    icon = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
         verbose_name = "Category Skill"

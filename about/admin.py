@@ -27,7 +27,19 @@ class AboutAdmin(SummernoteModelAdmin, ModelAdmin):
             {"fields": ("user", "username", "phone_number", "email", "date_of_birth")},
         ),
         ("Profile Details", {"fields": ("headline", "address", "image", "resume")}),
-        ("Additional Info", {"fields": ("about", "age", "degree", "views")}),
+        (
+            "Additional Info",
+            {
+                "fields": (
+                    "about",
+                    "age",
+                    "degree",
+                    "views",
+                    "total_experience",
+                    "available_for_hire",
+                )
+            },
+        ),
     )
 
 
@@ -61,12 +73,12 @@ class EXPAdmin(ModelAdmin):
 
 @admin.register(MySkills)
 class MySkillsAdmin(ModelAdmin):
-    list_display = ("category", "percent")
+    list_display = ("category", "name","percent")
 
 
 @admin.register(CategorySkills)
 class CategorySkillsAdmin(ModelAdmin):
-    list_display = ("name",)
+    list_display = ("name","icon")
 
 
 @admin.register(Language)

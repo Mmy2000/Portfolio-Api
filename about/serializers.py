@@ -34,12 +34,16 @@ class ProfessionalExperienceSerializer(serializers.ModelSerializer):
 class MySkillsSerializer(serializers.ModelSerializer):
     class Meta:
         model = MySkills
-        fields = '__all__'
+        fields = ["id", "name", "percent"]
+
 
 class CategorySkillsSerializer(serializers.ModelSerializer):
+    skills = MySkillsSerializer(source="skills_category", many=True, read_only=True)
+
     class Meta:
         model = CategorySkills
-        fields = '__all__'
+        fields = ["id", "name", "icon", "skills"]
+
 
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:

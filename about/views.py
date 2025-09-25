@@ -33,7 +33,7 @@ class EducationRetriveAPIView(generics.RetrieveAPIView):
             data=serializer.data,
             status=200,
         )
-    
+
 class SummaryRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = SummarySerializer
 
@@ -47,7 +47,7 @@ class SummaryRetrieveAPIView(generics.RetrieveAPIView):
             data=serializer.data,
             status=200,
         )
-    
+
 class ProfessionalExperienceListAPIView(generics.ListAPIView):
     queryset = ProfessionalExperience.objects.all().order_by('-year')
     serializer_class = ProfessionalExperienceSerializer
@@ -64,4 +64,18 @@ class ProfessionalExperienceListAPIView(generics.ListAPIView):
             data=results,
             status=response.status_code,
             pagination=pagination,
+        )
+
+
+class CategorySkillsListAPIView(generics.ListAPIView):
+    queryset = CategorySkills.objects.prefetch_related("skills_category").all()
+    serializer_class = CategorySkillsSerializer
+    pagination_class = None  # you can enable if needed
+
+    def list(self, request, *args, **kwargs):
+        response = super().list(request, *args, **kwargs)
+        results = response.data
+        return CustomResponse(
+            data=results,
+            status=response.status_code,
         )

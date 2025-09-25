@@ -6,4 +6,5 @@ urlpatterns = [
     path('education/', EducationRetriveAPIView.as_view(), name='education'),
     path('summary/', SummaryRetrieveAPIView.as_view(), name='summary'),
     path('professional_experience/', ProfessionalExperienceListAPIView.as_view(), name='professional_experience'),
+    path('my_skills/', CategorySkillsListAPIView.as_view(), name='my_skills'),
 ]
