@@ -24,6 +24,10 @@ class Projects(models.Model):
     github = models.CharField(null=True,blank=True, max_length=50)
     client = models.CharField(null=True,blank=True, max_length=50)
     tags = TaggableManager(blank=True)
+    status = models.CharField(null=True, blank=True, max_length=50)
+    duration = models.CharField(null=True, blank=True, max_length=50)
+    team_size = models.CharField(null=True, blank=True, max_length=50)
+    is_featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(("created_at"), default=timezone.now)
     updated_at = models.DateTimeField(("updated_at"), auto_now=True)
 

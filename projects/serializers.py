@@ -25,6 +25,7 @@ class ProjectListSerializer(serializers.ModelSerializer):
             "tags",
             "url",
             "github",
+            "is_featured",
             "created_at",
             "updated_at",
         ]
@@ -47,7 +48,12 @@ class ProjectsDetailsSerializer(serializers.ModelSerializer):
             "category",
             "tags",
             "url",
+            "github",
             "client",
             "images",
+            "status",
+            "duration",
+            "team_size",
+            "is_featured",
             "created_at",
         ]

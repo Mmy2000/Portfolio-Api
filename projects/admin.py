@@ -30,7 +30,7 @@ class ProjectsAdmin(SummernoteModelAdmin, ModelAdmin):
     summernote_fields = ("description", )
 
     list_display = ("title", "auther", "categoryproject", "created_at", "updated_at")
-    list_filter = ("categoryproject", "created_at", "tags")
+    list_filter = ("categoryproject", "created_at", "tags", "status", "is_featured")
     search_fields = ("title", "client", "tags__name", "auther__username")
     ordering = ("-created_at",)
 
@@ -66,7 +66,17 @@ class ProjectsAdmin(SummernoteModelAdmin, ModelAdmin):
         (
             "Extra",
             {
-                "fields": (("url", "client","github"),),
+                "fields": (
+                    (
+                        "url",
+                        "client",
+                        "github",
+                        "status",
+                        "duration",
+                        "team_size",
+                        "is_featured",
+                    ),
+                ),
                 "classes": ("collapse",),  # collapsible
             },
         ),
